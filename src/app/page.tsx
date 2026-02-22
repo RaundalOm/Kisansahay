@@ -6,11 +6,13 @@ import { Navbar } from "@/components/Navbar";
 import { ApplicationForm } from "@/components/Farmer/ApplicationForm";
 import { StatusTracker } from "@/components/Farmer/StatusTracker";
 import { useStore } from "@/lib/store";
+import { useLanguage } from "@/lib/useLanguage";
 import { ArrowRight, CheckCircle, Users, Sprout, Landmark, ShieldCheck, History, ListChecks } from "lucide-react";
 
 export default function FarmerPortal() {
   const router = useRouter();
   const { token, user } = useStore();
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (token && user) {
@@ -78,18 +80,24 @@ export default function FarmerPortal() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white w-full">
           <div className="max-w-3xl animate-fade-in">
             <h1 className="text-6xl font-black mb-6 leading-tight tracking-tight">
-              AI-Based Government <br /><span className="text-green-400 font-black">Scheme Allocation</span>
+              {t('heroTitle')}
             </h1>
             <p className="text-2xl mb-10 text-gray-100 font-medium">
-              A fair, transparent, and fully automated system ensuring government benefits reach the most deserving farmers first.
+              {t('heroSubtitle')}
             </p>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-4">
               <button
-                onClick={() => window.location.href = '/login'}
+                onClick={() => window.location.href = '/language-select'}
                 className="bg-green-500 hover:bg-green-600 text-white px-10 py-5 rounded-xl font-black text-xl flex items-center space-x-3 transition-all shadow-2xl hover:-translate-y-1 active:scale-95"
               >
-                <span>Apply Now (Farmer Portal)</span>
+                <span>{t('applyNow')}</span>
                 <ArrowRight size={24} />
+              </button>
+              <button
+                onClick={() => window.location.href = '/login'}
+                className="bg-white/10 hover:bg-white/20 border-2 border-white/30 text-white px-8 py-5 rounded-xl font-black text-lg transition-all hover:-translate-y-1 active:scale-95"
+              >
+                {t('returningFarmer')}
               </button>
             </div>
           </div>
@@ -102,19 +110,19 @@ export default function FarmerPortal() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center text-white">
             <div className="space-y-4">
               <div className="text-5xl font-black text-green-400">10K+</div>
-              <div className="text-lg font-bold opacity-80 uppercase tracking-widest">Farmers Registered</div>
+              <div className="text-lg font-bold opacity-80 uppercase tracking-widest">{t('farmersRegistered')}</div>
             </div>
             <div className="space-y-4">
               <div className="text-5xl font-black text-green-400">200+</div>
-              <div className="text-lg font-bold opacity-80 uppercase tracking-widest">Schemes Distributed</div>
+              <div className="text-lg font-bold opacity-80 uppercase tracking-widest">{t('schemesDistributed')}</div>
             </div>
             <div className="space-y-4">
               <div className="text-5xl font-black text-green-400">50+</div>
-              <div className="text-lg font-bold opacity-80 uppercase tracking-widest">Districts Covered</div>
+              <div className="text-lg font-bold opacity-80 uppercase tracking-widest">{t('districtsCovered')}</div>
             </div>
             <div className="space-y-4 flex flex-col items-center">
               <ShieldCheck size={48} className="text-green-400 mb-2" />
-              <div className="text-lg font-bold opacity-80 uppercase tracking-widest">AI Powered Selection</div>
+              <div className="text-lg font-bold opacity-80 uppercase tracking-widest">{t('aiPowered')}</div>
             </div>
           </div>
         </div>
@@ -123,7 +131,7 @@ export default function FarmerPortal() {
       {/* How it Works */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl font-black text-center text-green-900 mb-20 uppercase tracking-tighter italic">How the System Works</h2>
+          <h2 className="text-5xl font-black text-center text-green-900 mb-20 uppercase tracking-tighter italic">{t('howItWorks')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { title: "1. Farmer Applies", desc: "Farmers securely register and enter land size, income, and district details.", icon: Users },

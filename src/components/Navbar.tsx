@@ -4,16 +4,18 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useStore } from '@/lib/store';
 import { LogOut, Home, Shield, LayoutDashboard } from 'lucide-react';
+import { useLanguage } from '@/lib/useLanguage';
 
 export const Navbar = () => {
     const pathname = usePathname();
     const router = useRouter();
     const { token, user, logout } = useStore();
+    const { t } = useLanguage();
 
     const allLinks = [
-        { name: 'Portal', href: '/', icon: Home, roles: ['farmer', 'admin', 'officer'] },
-        { name: 'Admin', href: '/admin', icon: Shield, roles: ['admin'] },
-        { name: 'Officer', href: '/officer', icon: LayoutDashboard, roles: ['officer', 'admin'] },
+        { nameKey: 'portal', href: '/', icon: Home, roles: ['farmer', 'admin', 'officer'] },
+        { nameKey: 'admin', href: '/admin', icon: Shield, roles: ['admin'] },
+        { nameKey: 'officer', href: '/officer', icon: LayoutDashboard, roles: ['officer', 'admin'] },
     ];
 
     const links = allLinks.filter(link => !user || link.roles.includes(user.role));
@@ -30,7 +32,7 @@ export const Navbar = () => {
                     <div className="flex items-center">
                         <Link href="/" className="flex items-center space-x-2 no-underline">
                             <span className="text-2xl font-black tracking-tighter text-white uppercase italic">
-                                Smart<span className="text-green-400">AgriAI</span>
+                                Kisan<span className="text-green-400">Sahay</span>
                             </span>
                         </Link>
                     </div>
@@ -46,14 +48,14 @@ export const Navbar = () => {
                                     }`}
                             >
                                 <link.icon size={16} />
-                                <span>{link.name}</span>
+                                <span>{t(link.nameKey)}</span>
                             </Link>
                         ))}
 
                         {!token ? (
                             <div className="flex space-x-4">
                                 <Link href="/login" className="bg-white text-green-900 px-6 py-2 rounded-lg font-bold hover:bg-green-50 transition-colors no-underline">
-                                    Secure Portal Login
+                                    {t('portalLogin')}
                                 </Link>
                             </div>
                         ) : (
@@ -62,7 +64,7 @@ export const Navbar = () => {
                                 className="flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-bold transition-all shadow-md active:scale-95"
                             >
                                 <LogOut size={16} />
-                                <span>Logout</span>
+                                <span>{t('logout')}</span>
                             </button>
                         )}
                     </div>
