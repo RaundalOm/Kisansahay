@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f3f4f6;
+  /* Gray 100 as requested */
+  --foreground: #111827;
+  --primary: #064e3b;
+  /* Green 900 */
+  --primary-foreground: #ffffff;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-100 text-gray-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-green-900 hover:bg-green-800 text-white font-bold py-2 px-6 rounded-lg transition-colors inline-block;
+  }
+
+  .card-container {
+    @apply bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow border border-gray-200;
+  }
+}
+
+/* Maintain some custom animations for consistency */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}

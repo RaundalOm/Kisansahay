@@ -1,0 +1,6 @@
+
+[SMS GATEWAY] >>> TO: 1771725170 | MESSAGE: Welcome Final Admin! Your identity as a UserRole.ADMIN has been registered on SmartAgriAI.
+
+[SMS GATEWAY] >>> TO: 9309224773 | MESSAGE: Your application APP-6C580CA2 is received.
+
+[SMS GATEWAY] >>> TO: 9309224773 | MESSAGE: Congratulations! Your application APP-6C580CA2 has been APPROVED. Benefit disbursement will follow shortly.
